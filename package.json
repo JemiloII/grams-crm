@@ -1,0 +1,19 @@
+{
+  "name": "gram",
+  "version": "1.0.0",
+  "description": "CRM for my grandma's Go Promotions sales company. Note: It is catered to her workflow.",
+  "main": "run.js",
+  "scripts": {
+    "installDatabase": "node ./database/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian Jemilo II <brian@visualnovelx.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.15.0",
+    "csv-parse": "1.0.2",
+    "express": "4.13.4",
+    "express-handlebars": "3.0.0",
+    "sqlite3": "3.1.1"
+  }
+}
