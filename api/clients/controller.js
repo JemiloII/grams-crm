@@ -14,7 +14,7 @@ function add (req, res, next) {
 
 }
 
-function edit (req, res, next) {
+function update (req, res, next) {
 
 }
 
@@ -25,7 +25,7 @@ function remove (req, res, next) {
 
 module.exports = {
     add: add,
-    edit: edit,
+    update: update,
     get: get,
     list: list,
     remove: remove

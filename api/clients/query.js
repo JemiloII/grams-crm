@@ -38,17 +38,17 @@ function add (id, client, cb) {
     db.run(cb);
 }
 
-function edit (id, client, cb) {
+function update (id, client, cb) {
     db.run(cb);
 }
 
 function remove (id, cb) {
-    db.run(cb);
+    db.run('DELETE FROM clients WHERE id=$id;', {$id: id}, cb);
 }
 
 module.exports = {
     add: add,
-    edit: edit,
+    update: update,
     get: get,
     list: list,
     remove: remove
