@@ -34,12 +34,69 @@ function get (id, cb) {
     db.run('SELECT * FROM clients WHERE id=$id;', {$id: id}, cb);
 }
 
-function add (id, client, cb) {
-    db.run(cb);
+/**
+ * Add Client
+ * @desciption Inserts a new client into the database.
+ * @param client {object}
+ * @param client.company {string}
+ * @param client.contact {string}
+ * @param client.phone {string}
+ * @param client.email {string}
+ * @param client.fax {string}
+ * @param client.title {string}
+ * @param client.address1 {string}
+ * @param client.address2 {string}
+ * @param client.city {string}
+ * @param client.state {string}
+ * @param client.zip {string}
+ * @param cb
+ */
+function add (client, cb) {
+    db.run('INSERT INTO clients' +
+        ' (company,contact,phone,email,fax,title,address1,address2,city,state,zip) VALUES' +
+        ' ($company,$contact,$phone,$email,$fax,$title,$address1,$address2,$city,$state,$zip);',
+        {
+            $company: client.company,
+            $contact: client.contact,
+            $phone: client.phone,
+            $email: client.email,
+            $fax: client.fax,
+            $title: client.title,
+            $address1: client.address1,
+            $address2: client.address2,
+            $city: client.city,
+            $state: client.state,
+            $zip: client.zip
+        },
+        cb);
 }
 
+/**
+ * Update Client
+ * @desciption Updates an existing client in the database.
+ * @param id {numeric}
+ * @param client {object}
+ * @param client.company {string}
+ * @param client.contact {string}
+ * @param client.phone {string}
+ * @param client.email {string}
+ * @param client.fax {string}
+ * @param client.title {string}
+ * @param client.address1 {string}
+ * @param client.address2 {string}
+ * @param client.city {string}
+ * @param client.state {string}
+ * @param client.zip {string}
+ * @param cb
+ */
 function update (id, client, cb) {
-    db.run(cb);
+    var set = [];
+    var query = 'UPDATE clients SET ';
+    Object.keys(client).forEach(function (key) {
+        set.push(key + '=$' + client[key]);
+    });
+    query += set.join(', ') + 'WHERE id=$id;';
+    db.run(query, cb);
 }
 
 function remove (id, cb) {
