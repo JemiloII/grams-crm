@@ -6,17 +6,17 @@ var path = require('path');
 function createClientsTable (db, cb) {
     db.run('CREATE TABLE clients (' +
         'id integer primary key autoincrement,' +
-        'Company string,' +
-        'Contact string,' +
-        'Phone string,' +
-        'Email string,' +
-        'Fax string,' +
-        'Title string,' +
-        'Address1 string,' +
-        'Address2 string,' +
-        'City string,' +
-        'State string,' +
-        'Zip string);', cb);
+        'company string,' +
+        'contact string,' +
+        'phone string,' +
+        'email string,' +
+        'fax string,' +
+        'title string,' +
+        'address1 string,' +
+        'address2 string,' +
+        'city string,' +
+        'state string,' +
+        'zip string);', cb);
 }
 
 function createDatabase (savePath, name, cb) {

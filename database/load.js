@@ -38,7 +38,7 @@ function insertData (csvRows) {
     db.run('BEGIN TRANSACTION;');
     csvRows.forEach(function (csvRow) {
         console.log('csvRow: ', csvRow);
-        db.run('INSERT OR IGNORE INTO clients (Company,Contact,Phone,Fax,Title,Address1,Address2,City,State,Zip) VALUES (?,?,?,?,?,?,?,?,?,?);', csvRow, insertError);
+        db.run('INSERT OR IGNORE INTO clients (company,contact,phone,fax,title,address1,address2,city,state,zip) VALUES (?,?,?,?,?,?,?,?,?,?);', csvRow, insertError);
     });
     db.run('END;');
 }
