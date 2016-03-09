@@ -31,7 +31,7 @@ function list (search, cb) {
 }
 
 function get (id, cb) {
-    db.run(cb);
+    db.run('SELECT * FROM clients WHERE id=$id;', {$id: id}, cb);
 }
 
 function add (id, client, cb) {
