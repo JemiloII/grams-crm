@@ -1,8 +1,8 @@
 'use strict';
 
 var path = require('path');
-var file = path(__dirname, '../database/database.db');
-var sqlite3 = require('sqlite3').verbose();
+var file = path.join(__dirname, '../../database/database.db');
+var sqlite3 = require('sqlite3');
 var db = new sqlite3.Database(file);
 
 /**
@@ -19,15 +19,22 @@ function list (search, cb) {
         cb = search;
     }
     else {
-        query += ' WHERE';
+        if (search.company || search.contact) {
+            query += ' WHERE';
+        }
         if (search.company) {
-            query += ' company=' + search.company;
+            query += ' company LIKE "%' + search.company + '%"';
+        }
+        if (search.company && search.contact) {
+            query += ' AND';
         }
         if (search.contact) {
-            query += ' contact=' + search.contact;
+            query += ' contact LIKE "%' + search.contact + '%"';
         }
     }
-    db.run(query + ';', cb);
+    query += ';';
+    console.log('Query:', query);
+    db.all(query, cb);
 }
 
 /**
@@ -37,7 +44,7 @@ function list (search, cb) {
  * @param cb {function}
  */
 function get (id, cb) {
-    db.run('SELECT * FROM clients WHERE id=$id;', {$id: id}, cb);
+    db.get('SELECT * FROM clients WHERE id=$id;', {$id: id}, cb);
 }
 
 /**
@@ -58,7 +65,7 @@ function get (id, cb) {
  * @param cb
  */
 function add (client, cb) {
-    db.run('INSERT INTO clients' +
+    db.get('INSERT INTO clients' +
         ' (company,contact,phone,email,fax,title,address1,address2,city,state,zip) VALUES' +
         ' ($company,$contact,$phone,$email,$fax,$title,$address1,$address2,$city,$state,$zip);',
         {
@@ -102,7 +109,7 @@ function update (id, client, cb) {
         set.push(key + '=$' + client[key]);
     });
     query += set.join(', ') + 'WHERE id=$id;';
-    db.run(query, {$id: id}, cb);
+    db.get(query, {$id: id}, cb);
 }
 
 /**
@@ -112,7 +119,7 @@ function update (id, client, cb) {
  * @param cb {function}
  */
 function remove (id, cb) {
-    db.run('DELETE FROM clients WHERE id=$id;', {$id: id}, cb);
+    db.get('DELETE FROM clients WHERE id=$id;', {$id: id}, cb);
 }
 
 module.exports = {

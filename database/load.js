@@ -37,10 +37,18 @@ function formatPhoneNumbers (phoneNumber) {
 function insertData (csvRows) {
     db.run('BEGIN TRANSACTION;');
     csvRows.forEach(function (csvRow) {
-        console.log('csvRow: ', csvRow);
-        db.run('INSERT OR IGNORE INTO clients (company,contact,phone,fax,title,address1,address2,city,state,zip) VALUES (?,?,?,?,?,?,?,?,?,?);', csvRow, insertError);
+        db.run('INSERT OR IGNORE INTO clients (company,contact,phone,fax,title,address1,address2,city,state,zip)' +
+            ' VALUES (?,?,?,?,?,?,?,?,?,?);', csvRow, insertError);
     });
-    db.run('END;');
+    db.run('END;', function (error) {
+        if (error) {
+            console.log('There was an error with the transaction!');
+            console.log('Error: ', error);
+        }
+        else {
+            console.log('Database load complete!');
+        }
+    });
 }
 function insertError (error) {
     if (error) {
