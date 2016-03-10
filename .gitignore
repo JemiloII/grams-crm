@@ -1,4 +1,5 @@
-/database/database.db
-/database/database.csv
+/database/*.csv
+/database/*.db
+/database/*.db-journal
 /.idea
 /node_modules
