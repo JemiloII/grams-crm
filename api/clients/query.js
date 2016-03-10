@@ -30,13 +30,18 @@ function list (search, cb) {
     db.run(query + ';', cb);
 }
 
+/**
+ * Get Client
+ * @description Retrieve an existing client from the database.
+ * @param id {numeric}
+ */
 function get (id, cb) {
     db.run('SELECT * FROM clients WHERE id=$id;', {$id: id}, cb);
 }
 
 /**
  * Add Client
- * @desciption Inserts a new client into the database.
+ * @description Inserts a new client into the database.
  * @param client {object}
  * @param client.company {string}
  * @param client.contact {string}
@@ -73,7 +78,7 @@ function add (client, cb) {
 
 /**
  * Update Client
- * @desciption Updates an existing client in the database.
+ * @description Updates an existing client in the database.
  * @param id {numeric}
  * @param client {object}
  * @param client.company {string}
@@ -96,9 +101,14 @@ function update (id, client, cb) {
         set.push(key + '=$' + client[key]);
     });
     query += set.join(', ') + 'WHERE id=$id;';
-    db.run(query, cb);
+    db.run(query, {$id: id}, cb);
 }
 
+/**
+ * Remove Client
+ * @description Remove an existing client from the database.
+ * @param id {numeric}
+ */
 function remove (id, cb) {
     db.run('DELETE FROM clients WHERE id=$id;', {$id: id}, cb);
 }
