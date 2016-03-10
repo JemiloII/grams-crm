@@ -34,6 +34,7 @@ function list (search, cb) {
  * Get Client
  * @description Retrieve an existing client from the database.
  * @param id {numeric}
+ * @param cb {function}
  */
 function get (id, cb) {
     db.run('SELECT * FROM clients WHERE id=$id;', {$id: id}, cb);
@@ -108,6 +109,7 @@ function update (id, client, cb) {
  * Remove Client
  * @description Remove an existing client from the database.
  * @param id {numeric}
+ * @param cb {function}
  */
 function remove (id, cb) {
     db.run('DELETE FROM clients WHERE id=$id;', {$id: id}, cb);
