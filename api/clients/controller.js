@@ -28,7 +28,8 @@ function get (req, res) {
 }
 
 function add (req, res) {
-    query.add(req.params.id, function (error, data) {
+    query.add(req.body, function (error, data) {
+        console.log({error: error, data: data});
         if (error) {
             res.status(409).send({error: 'Error adding client to database!'})
         }
@@ -40,7 +41,7 @@ function add (req, res) {
 }
 
 function update (req, res) {
-    query.get(req.params.id, function (error, data) {
+    query.update(req.params.id, req.body, function (error, data) {
         if (error) {
             res.status(409).send({error: 'Error updating client in database!'})
         }
@@ -52,7 +53,7 @@ function update (req, res) {
 }
 
 function remove (req, res) {
-    query.get(req.params.id, function (error, data) {
+    query.remove(req.params.id, function (error, data) {
         if (error) {
             res.status(409).send({error: 'Error removing client from database!'})
         }
