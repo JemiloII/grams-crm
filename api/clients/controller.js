@@ -2,11 +2,14 @@
 
 var query = require('./query');
 
-function list (req, res) {
+function list (req, res, next) {
     query.list(req.body, function (error, data) {
         if (error) {
             console.log('Client list error: ', error);
-            res.status(409).send({error: 'Error retrieving list of clients from database!'})
+            res.status(404).send({error: 'Error retrieving list of clients from database!'});
+        }
+        else if (!data) {
+            next();
         }
         else {
             console.log('Retrieved client list data!');
@@ -15,10 +18,13 @@ function list (req, res) {
     });
 }
 
-function get (req, res) {
+function get (req, res, next) {
     query.get(req.params.id, function (error, data) {
         if (error) {
-            res.status(409).send({error: 'Error retrieving client from database!'})
+            res.status(404).send({error: 'Error retrieving client from database!'});
+        }
+        else if (!data) {
+            next();
         }
         else {
             console.log('Retrieved client data: ', data);
@@ -28,10 +34,9 @@ function get (req, res) {
 }
 
 function add (req, res) {
-    query.add(req.body, function (error, data) {
-        console.log({error: error, data: data});
+    query.add(req.body, function (error) {
         if (error) {
-            res.status(409).send({error: 'Error adding client to database!'})
+            res.status(409).send({error: 'Error adding client to database!'});
         }
         else {
             var message = 'Client added successfully!';
@@ -42,9 +47,9 @@ function add (req, res) {
 }
 
 function update (req, res) {
-    query.update(req.params.id, req.body, function (error, data) {
+    query.update(req.params.id, req.body, function (error) {
         if (error) {
-            res.status(409).send({error: 'Error updating client in database!'})
+            res.status(409).send({error: 'Error updating client in database!'});
         }
         else {
             var message = 'Client updated successfully!';
@@ -55,7 +60,7 @@ function update (req, res) {
 }
 
 function remove (req, res) {
-    query.remove(req.params.id, function (error, data) {
+    query.remove(req.params.id, function (error) {
         if (error) {
             res.status(409).send({error: 'Error deleting client from database!'});
         }

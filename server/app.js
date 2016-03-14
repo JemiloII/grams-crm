@@ -7,6 +7,7 @@ var path = require('path');
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
+app.use('/', express.static(path.join(__dirname, '../public/app')));
 
 app.all('/ok*', function (req, res) {
     res.status(200).send('ok');
