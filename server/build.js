@@ -1,19 +1,24 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
 
-fs
-    .createReadStream('../bower_components/angular/angular.min.js')
-    .pipe(fs.createWriteStream('../public/js/angular.min.js'));
+/**
+ * Move files
+ */
 
-fs
-    .createReadStream('../bower_components/angular-toastr/dist/angular-toastr.min.js')
-    .pipe(fs.createWriteStream('../public/js/angular-toastr.min.js'));
+fs  /** Angular */
+    .createReadStream(path.join(__dirname, '../bower_components/angular/angular.min.js'))
+    .pipe(fs.createWriteStream(path.join(__dirname, '../public/js/angular.min.js')));
 
-fs
-    .createReadStream('../bower_components/angular-toastr/dist/angular-toastr.css')
-    .pipe(fs.createWriteStream('../public/css/angular-toastr.css'));
+fs  /** Angular-Route */
+    .createReadStream(path.join(__dirname, '../bower_components/angular-route/angular-route.min.js'))
+    .pipe(fs.createWriteStream(path.join(__dirname, '../public/js/angular-route.min.js')));
 
-fs
-    .createReadStream('../bower_components/angular-toastr/dist/angular-toastr.min.css')
-    .pipe(fs.createWriteStream('../public/css/angular-toastr.min.css'));
+fs  /** Angular-Toastr */
+    .createReadStream(path.join(__dirname, '../bower_components/angular-toastr/dist/angular-toastr.min.js'))
+    .pipe(fs.createWriteStream(path.join(__dirname, '../public/js/angular-toastr.min.js')));
+
+fs  /** Bulma */
+    .createReadStream(path.join(__dirname, '../bower_components/bulma/css/bulma.min.css'))
+    .pipe(fs.createWriteStream(path.join(__dirname, '../public/css/bulma.min.css')));

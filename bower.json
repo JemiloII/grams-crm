@@ -19,6 +19,7 @@
   "dependencies": {
     "angular": "^1.5.0",
     "bulma": "^0.0.16",
-    "angular-toastr": "^1.7.0"
+    "angular-toastr": "^1.7.0",
+    "angular-route": "^1.5.0"
   }
 }

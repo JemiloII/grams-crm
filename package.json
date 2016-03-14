@@ -4,7 +4,7 @@
   "description": "CRM for my grandma's Go Promotions sales company. Note: It is catered to her workflow.",
   "main": "run.js",
   "scripts": {
-    "prestart": "",
+    "prestart": "node server/build.js",
     "start": "node server/server.js",
     "installDatabase": "node ./database/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,7 @@
     "express": "4.13.4",
     "express-handlebars": "3.0.0",
     "lodash": "^4.6.1",
+    "sass": "^0.5.0",
     "sqlite3": "3.1.1",
     "validator": "5.1.0"
   },
