@@ -15,6 +15,10 @@ fs  /** Angular-Route */
     .createReadStream(path.join(__dirname, '../bower_components/angular-route/angular-route.min.js'))
     .pipe(fs.createWriteStream(path.join(__dirname, '../public/js/angular-route.min.js')));
 
+fs  /** Angular-Local-Storage */
+    .createReadStream(path.join(__dirname, '../bower_components/angular-local-storage/dist/angular-local-storage.min.js'))
+    .pipe(fs.createWriteStream(path.join(__dirname, '../public/js/angular-local-storage.min.js')));
+
 fs  /** Angular-Toastr */
     .createReadStream(path.join(__dirname, '../bower_components/angular-toastr/dist/angular-toastr.min.js'))
     .pipe(fs.createWriteStream(path.join(__dirname, '../public/js/angular-toastr.min.js')));

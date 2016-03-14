@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "node server/build.js",
     "start": "node server/server.js",
-    "installDatabase": "node ./database/index.js",
+    "database": "node ./database/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Brian Jemilo II <brian@visualnovelx.com>",
