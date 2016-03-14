@@ -9,7 +9,7 @@ function list (req, res) {
             res.status(409).send({error: 'Error retrieving list of clients from database!'})
         }
         else {
-            console.log('Got list data!');
+            console.log('Retrieved client list data!');
             res.status(200).send({client: data});
         }
     });
@@ -21,7 +21,7 @@ function get (req, res) {
             res.status(409).send({error: 'Error retrieving client from database!'})
         }
         else {
-            console.log('Got get data: ', data);
+            console.log('Retrieved client data: ', data);
             res.status(200).send({client: data});
         }
     });
@@ -34,8 +34,9 @@ function add (req, res) {
             res.status(409).send({error: 'Error adding client to database!'})
         }
         else {
-            console.log('Got add data: ', data);
-            res.status(200).send({client: data});
+            var message = 'Client added successfully!';
+            console.log(message);
+            res.status(200).send({message: message});
         }
     });
 }
@@ -46,8 +47,9 @@ function update (req, res) {
             res.status(409).send({error: 'Error updating client in database!'})
         }
         else {
-            console.log('Got update data: ', data);
-            res.status(200).send({client: data});
+            var message = 'Client updated successfully!';
+            console.log(message);
+            res.status(200).send({message: message});
         }
     });
 }
@@ -55,11 +57,12 @@ function update (req, res) {
 function remove (req, res) {
     query.remove(req.params.id, function (error, data) {
         if (error) {
-            res.status(409).send({error: 'Error removing client from database!'})
+            res.status(409).send({error: 'Error deleting client from database!'});
         }
         else {
-            console.log('Got remove data: ', data);
-            res.status(200).send({client: data});
+            var message = 'Client deleted successfully!';
+            console.log(message);
+            res.status(200).send({message: message});
         }
     });
 }

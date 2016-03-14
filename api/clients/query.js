@@ -65,7 +65,7 @@ function get (id, cb) {
  * @param cb
  */
 function add (client, cb) {
-    db.get('INSERT INTO clients (company,contact,phone,email,fax,title,address1,address2,city,state,zip)' +
+    db.run('INSERT INTO clients (company,contact,phone,email,fax,title,address1,address2,city,state,zip)' +
         ' VALUES ($company,$contact,$phone,$email,$fax,$title,$address1,$address2,$city,$state,$zip);',
         {
             $company: client.company,
@@ -82,7 +82,7 @@ function add (client, cb) {
         },
         function (error) {
             if (error) {
-                cb(error)
+                cb(error);
             }
         })
         .get('SELECT * FROM clients WHERE id=last_insert_rowid();', cb);
@@ -113,7 +113,7 @@ function update (id, client, cb) {
         set.push(key + '=$' + client[key]);
     });
     query += set.join(', ') + 'WHERE id=$id;';
-    db.get(query, {$id: id}, cb);
+    db.run(query, {$id: id}, cb);
 }
 
 /**
@@ -123,7 +123,7 @@ function update (id, client, cb) {
  * @param cb {function}
  */
 function remove (id, cb) {
-    db.get('DELETE FROM clients WHERE id=$id;', {$id: id}, cb);
+    db.run('DELETE FROM clients WHERE id=$id;', {$id: id}, cb);
 }
 
 module.exports = {
