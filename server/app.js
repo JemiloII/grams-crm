@@ -15,7 +15,7 @@ require('../api/clients/routes')(app);
 
 app.use('*', function (req, res) {
     var path = require('path');
-    res.status(404).sendFile(path.join(__dirname, '../assets/images/404.jpg'));
+    res.status(404).sendFile(path.join(__dirname, '../assets/img/404.jpg'));
 });
 
 module.exports = app;

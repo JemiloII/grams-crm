@@ -4,6 +4,8 @@
   "description": "CRM for my grandma's Go Promotions sales company. Note: It is catered to her workflow.",
   "main": "run.js",
   "scripts": {
+    "prestart": "",
+    "start": "node server/server.js",
     "installDatabase": "node ./database/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

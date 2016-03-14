@@ -1,0 +1,24 @@
+{
+  "name": "gram-crm",
+  "description": "CRM for my grandma's Go Promotions sales company. Note: It is catered to her workflow.",
+  "main": "run.js",
+  "authors": [
+    "Brian Jemilo II <brian@visualnovelx.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/JemiloII/grams-crm",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "bulma": "^0.0.16",
+    "angular-toastr": "^1.7.0"
+  }
+}
