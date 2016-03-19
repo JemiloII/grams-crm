@@ -1,0 +1,31 @@
+<!-- ClientEditCtrl -->
+<div>
+    <div class="row">
+        <div class="col-sm-4">
+            <form role="form" name="editForm" ng-submit="saveClient()" novalidate>
+                <!-- Bootstrap-compliant form -->
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" ng-minlength="2" ng-model="editingClient.company" name="company" id="company" class="form-control" placeholder="Company" />
+                    <span ng-show="!editForm.company.pristine" class="help-block">Company name needs a minimum of 2 characters.</span>
+                    <div>-- {{editForm.company.$error.required}} -- {{!editForm.company.pristine}} --</div>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact</label>
+                    <input type="text" ng-minlength="2" ng-model="editingClient.contact" name="contact" id="contact" class="form-control" placeholder="Contact" />
+                    <span ng-show="!editForm.contact.$pristine" class="help-block">Contact name needs a minimum of 2 characters.</span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" ng-pattern="/\(\d{3}\)\d{3}-\d{4}/" ng-model="editingClient.phone" name="phone" id="phone" class="form-control" placeholder="Phone" ng-required="true" />
+                    <span ng-show="editForm.phone.$error.required && !editForm.phone.$pristine" class="help-block">Phone Format: (xxx)xxx-xxxx</span>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary" ng-disabled="editForm.$invalid">Save</button>
+                    <button type="button" class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- ClientEditCtrl -->
