@@ -3,7 +3,7 @@
 var query = require('./query');
 
 function list (req, res, next) {
-    query.list(req.body, function (error, data) {
+    query.list(req.query, function (error, data) {
         if (error) {
             console.log('Client list error: ', error);
             res.status(404).send({error: 'Error retrieving list of clients from database!'});

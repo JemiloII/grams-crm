@@ -1,0 +1,64 @@
+<div id="search">
+    <div class="row">
+        <div class="col-md-6">
+            <form id="search-form">
+                <span class="fa fa-search"></span>
+                <input type="text" size="50" class="form-control" placeholder="Enter the first part of a company name" ng-change="checkSearch()" ng-model="searchPrefix" />
+            </form>
+        </div>
+    </div>
+
+    <div id="search-results">
+        <div class="row">
+            <div class="col-md-6">
+                <div ng-show="clients.length === 0">
+                    No search results.
+                </div>
+                <div ng-show="clients.length > 0">
+                    {{ clients.length }} matching clients
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table" ng-show="clients.length > 0">
+                    <thead>
+                    <tr>
+                        <th>
+                            <a href="" ng-click="toggleSortOrder('company')">Company</a>
+                            <span ng-show="!reverse && (predicate === 'company')">&#x25b2;</span>
+                            <span ng-show="reverse && (predicate === 'company')">&#x25bc;</span>
+                        </th>
+
+                        <th>
+                            <a href="" ng-click="toggleSortOrder('contact')">Contact</a>
+                            <span ng-show="!reverse && (predicate === 'contact')">&#x25b2;</span>
+                            <span ng-show="reverse && (predicate === 'contact')">&#x25bc;</span>
+                        </th>
+
+                        <th>
+                            <a href="" ng-click="toggleSortOrder('phone')">Phone</a>
+                            <span ng-show="!reverse && (predicate === 'phone')">&#x25b2;</span>
+                            <span ng-show="reverse && (predicate === 'phone')">&#x25bc;</span>
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr id="template-row" ng-repeat="client in clients | orderBy:predicate:reverse">
+                        <td class="company">
+                            {{client.company}}
+                            <a ng-href="#/edit/{{client.id}}">edit</a>
+                            <a ng-href="#/show/{{client.id}}">show</a>
+                        </td>
+                        <td class="contact">{{client.contact}}</td>
+                        <td class="phone">{{client.phone}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ClientSearchCtrl -->

@@ -1,16 +1,20 @@
 <!doctype html>
-<html>
+<html ng-app="gramCrm">
 <head>
-    <title> </title>
+    <title>Gram's CRM</title>
     <script src="/js/angular.min.js"></script>
     <script src="/js/angular-local-storage.min.js"></script>
     <script src="/js/angular-route.min.js"></script>
     <script src="/js/angular-toastr.min.js"></script>
+    <script src="/app/app.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/angular-toastr.css">
     <link rel="stylesheet" href="/css/bulma.css">
 </head>
 <body>
-    <h1>Temporary Home</h1>
+    <h1>Gram's CRM</h1>
+
+    <div ng-view></div>
 </body>
 </html>
