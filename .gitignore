@@ -4,3 +4,4 @@
 /database/*.db-journal
 /.idea
 /node_modules
+*.log
