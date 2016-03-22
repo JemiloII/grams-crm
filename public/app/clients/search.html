@@ -1,9 +1,25 @@
 <!-- ClientSearchCtrl -->
 <div id="search">
+    <div class="hero-content">
+        <div class="container">
+            <p class="control is-grouped">
+                <span class="select">
+                <select>
+                    <option>Company</option>
+                    <option>Contact</option>
+                </select>
+                </span>
+                <input class="input" type="text" placeholder="Type the name here" ng-change="checkSearch()" ng-model="searchPrefix">
+                <a class="button is-info">
+                    Search
+                </a>
+            </p>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-6">
             <form id="search-form">
-                <span class="fa fa-search"></span>
                 <input type="text" size="50" class="form-control" placeholder="Enter the first part of a company name" ng-change="checkSearch()" ng-model="searchPrefix" />
             </form>
         </div>
